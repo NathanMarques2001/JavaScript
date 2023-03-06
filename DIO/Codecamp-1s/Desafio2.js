@@ -7,7 +7,7 @@ let id = parseInt(gets());
 //TODO: Print no console para qual Barraca o CleanCoder deve ir
 
 if(id % 2 == 0) {
-  print('Barraca da Direita');
+  console.log('Barraca da Direita');
 } else {
-  print('Barraca da Esquerda');
+  console.log('Barraca da Esquerda');
 }
