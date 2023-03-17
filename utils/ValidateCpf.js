@@ -1,5 +1,6 @@
 function Validate(cpf) {
     let cpfValido = 0;
+    resto = 0;
     //Se os caracteres do cpf forem iguais incrementa
     for (let i = 0; i < cpf.length; i++) {
         if (cpf[i] === cpf[i + 1]) {
@@ -24,7 +25,13 @@ function Validate(cpf) {
         for (let i = 0; i < cpf.length; i++) {
             soma += arrMult[i] * cpf[i];
         }
-        digito = (soma * 10) % 11;
+        resto = soma % 11;
+
+        if (resto >= 2) {
+            digito = 11 - resto;
+        } else {
+            digito = 0;
+        }
 
         //Adiciona os calculos no final do array do cpf
         cpf.push(digito);
@@ -37,7 +44,13 @@ function Validate(cpf) {
         for (let i = 0; i < cpf.length; i++) {
             soma += arrMult[i] * cpf[i];
         }
-        digito = (soma * 10) % 11;
+        resto = soma % 11;
+
+        if (resto >= 2) {
+            digito = 11 - resto;
+        } else {
+            digito = 0;
+        }
 
         cpf.push(digito);
 
@@ -53,9 +66,9 @@ function Validate(cpf) {
         console.log("CPF INVALIDO!");
         return false;
     }
-
 }
-//INVALIDO
+
+//VALIDO
 primeiro = 40519751000;
 //FORMATO INVALIDO - TODOS OS NUMEROS IGUAIS
 segundo = 11111111111;
