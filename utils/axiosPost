@@ -1,0 +1,36 @@
+const fs = require('fs');
+const axios = require('axios');
+
+const caminhoArquivo = './arqquivo.json';
+const conteudoArquivo = fs.readFileSync(caminhoArquivo, 'utf-8');
+const objetoJSON = JSON.parse(conteudoArquivo);
+const base = objetoJSON.array;
+
+const config = {
+    method: 'post',
+    url: 'url'
+};
+
+async function enviarDados(dados) {
+    config.data = {
+        "api_key": "key",
+        "param": [
+            {
+                "body": dados
+            }
+        ]
+    };
+
+    try {
+        const response = await axios(config);
+        console.log(response.data);
+    } catch (error) {
+        console.error('Ocorreu um erro ao fazer a solicitação POST:', error);
+    }
+}
+
+base.forEach((dados, index) => {
+    setTimeout(() => {
+        enviarDados(dados);
+    }, index * 2000); // Atraso de 2 segundos para evitar muitas requests por segundo
+});
