@@ -31,5 +31,28 @@ Capítulo 4
     4.8 O(n²)
 ========================
 Capítulo 5
-    5.1.
+    5.1. f(x) = 1 - Consistente
+    5.2. f(x) = rand() - Inconsistente
+    5.3. f(x) = proximo_espaco_vazio - Inconsistente
+    5.4. f(x) = len(x) - Consistente
+    5.5. C e D
+    5.6. B e D
+    5.7. B, C e D
+========================
+Capítulo 5
+    6.1.  x -- x
+         / \   |
+        x   o  |
+         \ /   |
+          o -- o
+    6.2. jato -> gato -> gado
+    6.3. Somente a B é válida
+    6.4. 1. Acordar
+         2. Praticar exercicio
+         3. Tomar banho
+         4. Trocar de roupa
+         5. Escovar os dentes
+         6. Embrulhar o lanche
+         7. Tomar café da manhã
+    6.5. A e C
 ========================
