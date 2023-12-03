@@ -50,3 +50,74 @@ test("Busca em Largura - Não deve ter vendedores de mangas na rede", () => {
 
   expect(BFS(graph, "Nathan")).toBeFalsy();
 });
+
+const dijkstra = require("../Algorithms/Dijkstra");
+test("Dijkstra - Deve encontrar o caminho menos custoso: Case 1", () => {
+
+  const graph = {};
+  graph["inicio"] = {};
+  graph["inicio"]["a"] = 6;
+  graph["inicio"]["b"] = 2;
+
+  graph["a"] = {};
+  graph["a"]["fim"] = 1;
+
+  graph["b"] = {};
+  graph["b"]["a"] = 3;
+  graph["b"]["fim"] = 5;
+
+  graph["fim"] = {};
+
+  const costs = {};
+  costs["a"] = 6;
+  costs["b"] = 2;
+  costs["fim"] = Infinity;
+
+  const parents = {};
+  parents["a"] = "inicio";
+  parents["b"] = "inicio";
+  parents["fim"] = null;
+
+  expect(dijkstra(graph, costs, parents)).toEqual(['inicio', 'b', 'a', 'fim']);
+});
+
+test("Dijkstra - Deve encontrar o caminho menos custoso: Case 2", () => {
+
+  const graph = {};
+  graph["inicio"] = {};
+  graph["inicio"]["a"] = 5;
+  graph["inicio"]["b"] = 2;
+
+  graph["a"] = {};
+  graph["a"]["c"] = 4;
+  graph["a"]["d"] = 2;
+
+  graph["b"] = {};
+  graph["b"]["a"] = 8;
+  graph["b"]["d"] = 7;
+
+  graph["c"] = {};
+  graph["c"]["fim"] = 3;
+  graph["c"]["d"] = 6;
+
+  graph["d"] = {};
+  graph["d"]["fim"] = 1;
+
+  graph["fim"] = {};
+
+  const costs = {};
+  costs["a"] = 6;
+  costs["b"] = 2;
+  costs["c"] = Infinity;
+  costs["d"] = Infinity;
+  costs["fim"] = Infinity;
+
+  const parents = {};
+  parents["a"] = "inicio";
+  parents["b"] = "inicio";
+  parents["c"] = null;
+  parents["d"] = null;
+  parents["fim"] = null;
+
+  expect(dijkstra(graph, costs, parents)).toEqual(['inicio', 'a', 'd', 'fim']);
+});
